@@ -1,14 +1,34 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'vitest';
 import { Character } from './character.js';
-import { Person } from './person.js';
+
+const character = new Character('ada', 'love', 'asf');
 
 describe('Character', () => {
-  it.todo(
-    'should create a character with a first name, last name, and role',
-    () => {},
-  );
+  it('should create a character with a first name, last name, and role', () => {
+    expect(character).toEqual(
+      expect.objectContaining({
+        firstName: expect.any(String),
+        lastName: expect.any(String),
+        role: expect.any(String),
+        level: 1,
+        lastModified: expect.any(Date),
+        strength: expect.any(Number),
+        dexterity: expect.any(Number),
+        constitution: expect.any(Number),
+        intelligence: expect.any(Number),
+        wisdom: expect.any(Number),
+        charisma: expect.any(Number),
+      }),
+    );
+  });
 
-  it.todo('should allow you to increase the level', () => {});
+  it('should allow you to increase the level', () => {
+    character.levelUp();
+    expect(character.level).toBe(2);
+  });
 
-  it.todo('should update the last modified date when leveling up', () => {});
+  it('should update the last modified date when leveling up', () => {
+    character.levelUp();
+    expect(character.lastModified).toBeInstanceOf(Date);
+  });
 });
