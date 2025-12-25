@@ -1,9 +1,12 @@
 import { describe, it } from 'vitest';
 import { Character } from './character.js';
 
-const character = new Character('ada', 'love', 'asf');
-
 describe('Character', () => {
+  let character;
+  beforeEach(() => {
+    character = new Character('ada', 'love', 'asf');
+  });
+
   it('should create a character with a first name, last name, and role', () => {
     expect(character).toEqual(
       expect.objectContaining({
